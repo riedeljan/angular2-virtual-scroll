@@ -59,9 +59,6 @@ export interface ChangeEvent {
 export class VirtualScrollComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input()
-  items: any[] = [];
-
-  @Input()
   scrollbarWidth: number;
 
   @Input()
@@ -81,6 +78,20 @@ export class VirtualScrollComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input()
   doNotCheckAngularZone: boolean = false;
+
+  private _items: any[] = [];
+  @Input()
+  set items(items: any[]) {
+    if (items === this._items) {
+      return;
+    }
+    this._items = items;
+    this.refresh();
+  }
+
+  get items(): any[] {
+    return this._items;
+  }
 
   private refreshHandler = () => {
     this.refresh();
