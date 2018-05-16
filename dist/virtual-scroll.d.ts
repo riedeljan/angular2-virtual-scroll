@@ -8,8 +8,6 @@ export declare class VirtualScrollComponent implements OnInit, OnChanges, OnDest
     private readonly element;
     private readonly renderer;
     private readonly zone;
-    items: any[];
-    private _items;
     scrollbarWidth: number;
     scrollbarHeight: number;
     childWidth: number;
@@ -17,6 +15,8 @@ export declare class VirtualScrollComponent implements OnInit, OnChanges, OnDest
     bufferAmount: number;
     scrollAnimationTime: number;
     doNotCheckAngularZone: boolean;
+    private _items;
+    items: any[];
     private refreshHandler;
     private _parentScroll;
     parentScroll: Element | Window;

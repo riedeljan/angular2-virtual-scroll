@@ -8,10 +8,10 @@ var VirtualScrollComponent = (function () {
         this.element = element;
         this.renderer = renderer;
         this.zone = zone;
-        this._items = [];
         this.bufferAmount = 0;
         this.scrollAnimationTime = 300;
         this.doNotCheckAngularZone = false;
+        this._items = [];
         this.refreshHandler = function () {
             _this.refresh();
         };
@@ -368,9 +368,9 @@ var VirtualScrollComponent = (function () {
                     exportAs: 'virtualScroll',
                     template: "\n    <div class=\"total-padding\" #shim></div>\n    <div class=\"scrollable-content\" #content>\n      <ng-content></ng-content>\n    </div>\n  ",
                     host: {
-                        '[style.overflow-y]': "parentScroll ? 'hidden' : 'auto'"
+                        '[style.overflow-y]': "parentScroll ? 'visible' : 'auto'"
                     },
-                    styles: ["\n    :host {\n      overflow: hidden;\n      position: relative;\n      display: block;\n      -webkit-overflow-scrolling: touch;\n    }\n\n    .scrollable-content {\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      position: absolute;\n    }\n\n    .total-padding {\n      width: 1px;\n      opacity: 0;\n    }\n  "]
+                    styles: ["\n    :host {\n      overflow: visible;\n      position: relative;\n      display: block;\n      -webkit-overflow-scrolling: touch;\n    }\n\n    .scrollable-content {\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      position: absolute;\n    }\n\n    .total-padding {\n      width: 1px;\n      opacity: 0;\n    }\n  "]
                 },] },
     ];
     /** @nocollapse */
@@ -380,7 +380,6 @@ var VirtualScrollComponent = (function () {
         { type: core_1.NgZone, },
     ]; };
     VirtualScrollComponent.propDecorators = {
-        'items': [{ type: core_1.Input },],
         'scrollbarWidth': [{ type: core_1.Input },],
         'scrollbarHeight': [{ type: core_1.Input },],
         'childWidth': [{ type: core_1.Input },],
@@ -388,6 +387,7 @@ var VirtualScrollComponent = (function () {
         'bufferAmount': [{ type: core_1.Input },],
         'scrollAnimationTime': [{ type: core_1.Input },],
         'doNotCheckAngularZone': [{ type: core_1.Input },],
+        'items': [{ type: core_1.Input },],
         'parentScroll': [{ type: core_1.Input },],
         'update': [{ type: core_1.Output },],
         'change': [{ type: core_1.Output },],
