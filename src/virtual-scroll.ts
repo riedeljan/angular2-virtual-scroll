@@ -32,11 +32,11 @@ export interface ChangeEvent {
     </div>
   `,
   host: {
-    '[style.overflow-y]': "parentScroll ? 'hidden' : 'auto'"
+    '[style.overflow-y]': "parentScroll ? 'visible' : 'auto'"
   },
   styles: [`
     :host {
-      overflow: hidden;
+      overflow: visible;
       position: relative;
       display: block;
       -webkit-overflow-scrolling: touch;
